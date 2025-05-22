@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mpPrincipal.master.cs" Inherits="ITPItemExchange.mpPrincipal" %>
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>ITP Item Exchange</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body { padding-top: 70px; }
+        footer { margin-top: 50px; padding: 1em; text-align: center; color: #6c757d; }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+<form id="form1" runat="server" enctype="multipart/form-data">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Default.aspx">ITP Item Exchange</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <asp:PlaceHolder ID="phInicio" runat="server">
+                            <li class="nav-item"><a class="nav-link" href="wpAlumno.aspx">Registrar Alumno</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpLogin.aspx">Iniciar Sesión</a></li>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="phMenuUsuario" runat="server">
+                            <li class="nav-item"><a class="nav-link" href="wpInicio.aspx">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpItem.aspx">Registrar Ítem</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpVerItems.aspx">Ver Ítems</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpPrestamo.aspx">Registrar Préstamo</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpHistorial.aspx">Historial</a></li>
+                             <li class="nav-item"><a class="nav-link" href="wpPerfil.aspx">Perfil</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wpAbout.aspx">Acerca de</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="wpLogout.aspx">
+                                    Cerrar sesión (<%= Session["nombre"] != null ? Session["nombre"].ToString() : "Usuario" %>)
+                                </a>
+                            </li>
+                        </asp:PlaceHolder>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+        </div>
+
+        <footer>
+            <p>&copy; <%: DateTime.Now.Year %> - ITP Item Exchange</p>
+        </footer>
+    </form>
+</body>
+</html>
